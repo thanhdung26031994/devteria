@@ -1,4 +1,4 @@
-package com.huynhdung.dto.response;
+package com.huynhdung.dto.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -8,8 +8,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AuthenticationResponse {
-
+public class IntrospectRequest {
     String token;
-    boolean authentication;
 }

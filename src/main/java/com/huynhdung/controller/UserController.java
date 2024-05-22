@@ -3,6 +3,7 @@ package com.huynhdung.controller;
 import com.huynhdung.dto.request.ApiResponse;
 import com.huynhdung.dto.request.UserCreationRequest;
 import com.huynhdung.dto.request.UserUpdateRequest;
+import com.huynhdung.dto.response.UserResponse;
 import com.huynhdung.entity.User;
 import com.huynhdung.service.UserService;
 import jakarta.validation.Valid;
@@ -31,12 +32,12 @@ public class UserController {
         return userService.getUsers();
     }
     @GetMapping("/{userId}")
-    User getUser(@PathVariable("userId") Long userId){
+    UserResponse getUser(@PathVariable("userId") Long userId){
         return userService.getUser(userId);
     }
 
     @PutMapping("/{userId}")
-    User updateUser(@PathVariable Long userId, @RequestBody UserUpdateRequest request){
+    UserResponse updateUser(@PathVariable Long userId, @RequestBody UserUpdateRequest request){
         return userService.updateUser(userId, request);
     }
 

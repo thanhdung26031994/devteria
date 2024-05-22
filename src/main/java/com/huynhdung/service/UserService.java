@@ -3,6 +3,8 @@ package com.huynhdung.service;
 import com.huynhdung.dto.request.UserCreationRequest;
 import com.huynhdung.dto.request.UserUpdateRequest;
 import com.huynhdung.entity.User;
+import com.huynhdung.exception.AppException;
+import com.huynhdung.exception.ErrorCode;
 import com.huynhdung.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,7 @@ public class UserService {
         User user = new User();
 
         if (userRepository.existsByUsername(request.getUsername()))
-            throw new RuntimeException("User existed.");
+            throw new AppException(ErrorCode.USER_EXISTED);
 
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());

@@ -1,5 +1,6 @@
 package com.huynhdung.controller;
 
+import com.huynhdung.dto.request.ApiResponse;
 import com.huynhdung.dto.request.UserCreationRequest;
 import com.huynhdung.dto.request.UserUpdateRequest;
 import com.huynhdung.entity.User;
@@ -17,8 +18,12 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    User createUser(@RequestBody @Valid UserCreationRequest request){
-        return userService.createRequest(request);
+    ApiResponse<User> createUser(@RequestBody @Valid UserCreationRequest request){
+        ApiResponse<User> apiResponse = new ApiResponse<>();
+
+        apiResponse.setResult(userService.createRequest(request));
+
+        return apiResponse;
     }
 
     @GetMapping

@@ -33,7 +33,7 @@ public class UserService {
             throw new AppException(ErrorCode.USER_EXISTED);
         User user = userMapper.toUser(request);
 
-        //ma hoa password bang interface PasswordEncoder
+        //ma hoa password
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 

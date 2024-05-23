@@ -91,7 +91,7 @@ public class AuthenticationService {
                 .expirationTime(new Date(
                         Instant.now().plus(1, ChronoUnit.HOURS).toEpochMilli()
                 )) //xac dinh thoi han het trong 1h
-                .claim("cope", buildCope(user))
+                .claim("scope", buildScope(user))
                 .build();
 
         Payload payload = new Payload(jwtClaimsSet.toJSONObject());
@@ -107,12 +107,15 @@ public class AuthenticationService {
         }
     }
 
-    private String buildCope(User user){
+    private String buildScope(User user){
         StringJoiner stringJoiner = new StringJoiner(" ");
         if (!CollectionUtils.isEmpty(user.getRoles())){
             user.getRoles().forEach(stringJoiner::add);
         }
         return stringJoiner.toString();
     }
+
+
+
 
 }

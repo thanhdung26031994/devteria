@@ -12,6 +12,7 @@ import com.huynhdung.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,12 +36,10 @@ public class UserService {
             throw new AppException(ErrorCode.USER_EXISTED);
         User user = userMapper.toUser(request);
 
-        //ma hoa password bang interface PasswordEncoder
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         HashSet<String> roles = new HashSet<>();
         roles.add(Role.USER.name());
-
         user.setRoles(roles);
 
         return userMapper.toUserResponse(userRepository.save(user));

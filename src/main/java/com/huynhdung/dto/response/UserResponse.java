@@ -15,6 +15,7 @@ public class UserResponse {
 
     Long id;
     String username;
+
     String firstName;
     String lastName;
     LocalDate dob;

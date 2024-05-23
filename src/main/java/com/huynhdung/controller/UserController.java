@@ -50,6 +50,13 @@ public class UserController {
         return userService.getUser(userId);
     }
 
+    @GetMapping("/myInfo")
+    ApiResponse<UserResponse> getMyInfo(){
+        return ApiResponse.<UserResponse>builder()
+                .result(userService.getMyInfo())
+                .build();
+    }
+
     @PutMapping("/{userId}")
     UserResponse updateUser(@PathVariable Long userId, @RequestBody UserUpdateRequest request){
         return userService.updateUser(userId, request);

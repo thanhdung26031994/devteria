@@ -8,7 +8,11 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
-@Data
+import java.util.Set;
+
+
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,4 +28,5 @@ public class User {
      String firstName;
      String lastName;
      LocalDate dob;
+     Set<String> roles;
 }
